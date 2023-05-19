@@ -11,7 +11,11 @@ export const productsSchema = {
   required: ['_id', 'text'],
   properties: {
     _id: ObjectIdSchema(),
-    text: { type: 'string' }
+    name: { type: "string"},
+    description: { type: "string"},
+    price: { type: "number"},
+    images: { type: "string"},
+    category: { type: "string"}
   }
 }
 export const productsValidator = getValidator(productsSchema, dataValidator)
