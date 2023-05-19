@@ -4,7 +4,7 @@ import { ObjectIdSchema } from '@feathersjs/schema'
 import { passwordHash } from '@feathersjs/authentication-local'
 import { dataValidator, queryValidator } from '../../validators.js'
 
-// Main data model schema
+// ------------------------------------------------------------------- Main data model schema
 export const userSchema = {
   $id: 'User',
   type: 'object',
@@ -25,7 +25,7 @@ export const userExternalResolver = resolve({
   password: async () => undefined
 })
 
-// Schema for creating new data
+// ------------------------------------------------------------------- Schema for creating new data
 export const userDataSchema = {
   $id: 'UserData',
   type: 'object',
@@ -40,7 +40,7 @@ export const userDataResolver = resolve({
   password: passwordHash({ strategy: 'local' })
 })
 
-// Schema for updating existing data
+// ------------------------------------------------------------------- Schema for updating existing data
 export const userPatchSchema = {
   $id: 'UserPatch',
   type: 'object',
@@ -55,7 +55,7 @@ export const userPatchResolver = resolve({
   password: passwordHash({ strategy: 'local' })
 })
 
-// Schema for allowed query properties
+// ------------------------------------------------------------------- Schema for allowed query properties
 export const userQuerySchema = {
   $id: 'UserQuery',
   type: 'object',
