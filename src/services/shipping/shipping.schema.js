@@ -4,7 +4,7 @@ import { ObjectIdSchema } from '@feathersjs/schema'
 import { dataValidator, queryValidator } from '../../validators.js'
 
 // Main data model schema
-export const shippingAddressSchema = {
+export const shippingSchema = {
   $id: 'ShippingAddress',
   type: 'object',
   additionalProperties: false,

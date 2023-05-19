@@ -3,7 +3,7 @@ import { resolve, getValidator, querySyntax } from '@feathersjs/schema'
 import { ObjectIdSchema } from '@feathersjs/schema'
 import { dataValidator, queryValidator } from '../../validators.js'
 
-export const discountSchema = {
+export const promotionsSchema = {
   $id: 'Promotions',
   type: 'object',
   additionalProperties: false,

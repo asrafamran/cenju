@@ -14,7 +14,7 @@ export const productsSchema = {
     name: { type: "string"},
     description: { type: "string"},
     price: { type: "number"},
-    images: { type: "string"},
+    image: { type: "string"},
     category: { type: "string"}
   }
 }

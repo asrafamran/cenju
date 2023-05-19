@@ -12,6 +12,7 @@ import {
   productsPatchResolver,
   productsQueryResolver
 } from './products.schema.js'
+import base64ImageConverter from '../../hooks/base-64-image-converter.cjs'
 import { ProductsService, getOptions } from './products.class.js'
 import { productsPath, productsMethods } from './products.shared.js'
 
@@ -45,11 +46,33 @@ export const products = (app) => {
       get: [],
       create: [
         schemaHooks.validateData(productsDataValidator),
-        schemaHooks.resolveData(productsDataResolver)
+        schemaHooks.resolveData(productsDataResolver),
+        async (context) => {
+          const image = context.data.image
+
+          if (image) {
+            // Convert the image to Base64
+            const base64Image = await base64ImageConverter(image)
+
+            // Set the image property to the Base64 image string
+            context.data.image = base64Image
+          }
+        }
       ],
       patch: [
         schemaHooks.validateData(productsPatchValidator),
-        schemaHooks.resolveData(productsPatchResolver)
+        schemaHooks.resolveData(productsPatchResolver),
+        async (context) => {
+          const imagePath = context.data.image // Assuming `image` property represents the image file path
+
+          if (imagePath) {
+            // Convert the image to Base64
+            const base64Image = await base64ImageConverter(imagePath)
+
+            // Set the image property to the Base64 image string
+            context.data.image = base64Image
+          }
+        }
       ],
       remove: []
     },
